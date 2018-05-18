@@ -1,0 +1,12 @@
+{
+  "name": "ClaysterSamples",
+  "version": "1.0.0",
+  "description": "These examples are released as-is using the *unlicense* license. Full license is in license.txt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

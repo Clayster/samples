@@ -1,0 +1,5 @@
+node-xmpp/*
+node_modules/*
+*.js
+*.pem
+*.pfx

@@ -1,0 +1,2 @@
+https://github.com/xmppjs/ltx/blob/master/lib/Element.js may be useful to understand xml()
+
