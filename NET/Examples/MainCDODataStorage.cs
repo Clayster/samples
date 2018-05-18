@@ -52,15 +52,16 @@ namespace ClaysterSamples
 
 			public ExampleStorageEntity()
 			{
-				string CertPath = "../../testsource.clayster.pfx";
+                string CertPath = "../../../YOURCERTHERE.pfx";
                 var Cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(CertPath);
 
                 Uplink = new Connection("164.138.24.100",
-							5222,
-                            "sandbox.clayster.com",
-							Cert,
-							0 /* Debug level */);
-
+                            5222,
+                            new JID("", "sandbox.clayster.com", ""),
+                            "",
+                            Cert,
+                            true, 30, 0);
+                
 				Uplink.Roster.OnSubscribe = Roster_OnSubscribe;
 				Uplink.Roster.OnUnsubscribed = Roster_OnUnsubscribed;
 
@@ -74,7 +75,7 @@ namespace ClaysterSamples
                 string MyClaimKey = Cert.GetCertHashString();
                 var awaiter = DataStorage.SessionController.SetClaimKey(MyClaimKey);
                 awaiter.Wait();
-                Console.WriteLine("Set claim key to {0} = ", awaiter.Result);
+                Console.WriteLine("Set claim key to {0} = {1}", awaiter.Result, MyClaimKey);
 
 				CPUUsage = new LWTSD.ResourceTypes.ResourceInteger();
 				CPUUsage.Path = "meters/cpuusage";

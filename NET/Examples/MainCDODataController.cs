@@ -68,14 +68,15 @@ namespace ClaysterSamples
 
 			public ExampleController()
 			{
-				string CertPath = "../../testcontroller.clayster.pfx";
+                string CertPath = "../../../YOURCERTHERE.pfx";
                 var Cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(CertPath);
 
                 Uplink = new Connection("164.138.24.100",
                             5222,
-                            "sandbox.clayster.com",
-                            Cert,
-                            0 /* Debug level */);
+                            new JID("", "sandbox.clayster.com", ""), 
+                            "", 
+                            Cert, 
+                            true, 30,0);
 
 				Uplink.Roster.OnSubscribe = Roster_OnSubscribe;
 				Uplink.Roster.OnUnsubscribed = Roster_OnUnsubscribed;
@@ -87,9 +88,9 @@ namespace ClaysterSamples
 					Thread.Sleep(10);
 
 
-				DataController.RequestedResources["MeteringTopology/Test/BooleanNode"] = new CDO.ResourceAccess()
+                DataController.RequestedResources["meters/cpuusage"] = new CDO.ResourceAccess()
 				{
-					ResourcePath = "MeteringTopology/Test/BooleanNode",
+                    ResourcePath = "meters/cpuusage",
 					Verbs = new List<CDO.DataVerb>() { CDO.DataVerb.GET }
 				};
 				var awaiter = DataController.ReadData();
@@ -107,7 +108,7 @@ namespace ClaysterSamples
 			{
 				if (NewState == Connection.CallbackConnectionState.Connected
 				  && DataController == null)
-                    DataController = new CDODataController(Uplink, Orchestrator, "2967ccade7964077af42eac660dbfe80");
+                    DataController = new CDODataController(Uplink, Orchestrator, "ENTITYIDHERE");
 				
 			}
 
