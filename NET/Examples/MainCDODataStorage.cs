@@ -49,18 +49,17 @@ namespace ClaysterSamples
 			{
 				Uplink.Roster.Unsubscribe(From);
 			}
+
 			public ExampleStorageEntity()
 			{
-				string StorageCertPath = "../../testsource.clayster.pfx";
-				var StorageCert = new System.Security.Cryptography.X509Certificates.X509Certificate2(StorageCertPath);
-				JID StorageJID = new JID("testsource.clayster@sandbox.clayster.com/jox");
+				string CertPath = "../../testsource.clayster.pfx";
+                var Cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(CertPath);
 
-				Uplink = new Connection("sandbox.clayster.com",
+                Uplink = new Connection("164.138.24.100",
 							5222,
-							StorageJID,
-							null,
-							StorageCert,
-							false);
+                            "sandbox.clayster.com",
+							Cert,
+							0 /* Debug level */);
 
 				Uplink.Roster.OnSubscribe = Roster_OnSubscribe;
 				Uplink.Roster.OnUnsubscribed = Roster_OnUnsubscribed;
@@ -70,6 +69,12 @@ namespace ClaysterSamples
 
 				while (DataStorage == null)
 					Thread.Sleep(10);
+
+                // Set claim key
+                string MyClaimKey = Cert.GetCertHashString();
+                var awaiter = DataStorage.SessionController.SetClaimKey(MyClaimKey);
+                awaiter.Wait();
+                Console.WriteLine("Set claim key to {0} = ", awaiter.Result);
 
 				CPUUsage = new LWTSD.ResourceTypes.ResourceInteger();
 				CPUUsage.Path = "meters/cpuusage";

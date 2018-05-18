@@ -68,16 +68,14 @@ namespace ClaysterSamples
 
 			public ExampleController()
 			{
-				string StorageCertPath = "../../testcontroller.clayster.pfx";
-				var StorageCert = new System.Security.Cryptography.X509Certificates.X509Certificate2(StorageCertPath);
-				JID StorageJID = new JID("testcontroller.clayster@sandbox.clayster.com/jox2");
+				string CertPath = "../../testcontroller.clayster.pfx";
+                var Cert = new System.Security.Cryptography.X509Certificates.X509Certificate2(CertPath);
 
                 Uplink = new Connection("164.138.24.100",
-							5222,
-							StorageJID,
-							null,
-							StorageCert,
-							true);
+                            5222,
+                            "sandbox.clayster.com",
+                            Cert,
+                            0 /* Debug level */);
 
 				Uplink.Roster.OnSubscribe = Roster_OnSubscribe;
 				Uplink.Roster.OnUnsubscribed = Roster_OnUnsubscribed;

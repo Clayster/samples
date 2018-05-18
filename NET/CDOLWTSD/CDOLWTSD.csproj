@@ -35,10 +35,6 @@
     <Compile Include="CDODataController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dxmppnet\dxmppnet-net4\dxmppnet.csproj">
-      <Project>{2b2184f5-b68b-4dfc-9fe1-3f41989e3999}</Project>
-      <Name>dxmppnet</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LWTSD\LWTSD.csproj">
       <Project>{AD6FD507-44AE-4CE9-9D7F-110F245FB633}</Project>
       <Name>LWTSD</Name>
@@ -46,6 +42,10 @@
     <ProjectReference Include="..\CDO\CDO.csproj">
       <Project>{B03E81FE-E7EA-45BA-84DC-403808BE9E4A}</Project>
       <Name>CDO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dxmppnet\dxmppnet\dxmppnet\dxmppnet-net4\dxmppnet.csproj">
+      <Project>{2B2184F5-B68B-4DFC-9FE1-3F41989E3999}</Project>
+      <Name>dxmppnet</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

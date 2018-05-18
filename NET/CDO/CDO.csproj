@@ -44,8 +44,8 @@
     <Compile Include="Session.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dxmppnet\dxmppnet-net4\dxmppnet.csproj">
-      <Project>{2b2184f5-b68b-4dfc-9fe1-3f41989e3999}</Project>
+    <ProjectReference Include="..\dxmppnet\dxmppnet\dxmppnet\dxmppnet-net4\dxmppnet.csproj">
+      <Project>{2B2184F5-B68B-4DFC-9FE1-3F41989E3999}</Project>
       <Name>dxmppnet</Name>
     </ProjectReference>
   </ItemGroup>
