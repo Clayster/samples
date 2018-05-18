@@ -1,4 +1,0 @@
-either run prereq.sh or clone via;
-
-git clone git@github.com:stefandxm/dxmppnet.git
-git clone https://github.com/stefandxm/dxmppnet.git
