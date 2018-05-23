@@ -34,7 +34,10 @@ namespace LWTSD.ResourceTypes
 		{
 			foreach (var it in Element.Elements(LWTSD.Namespace + "point"))
 			{
-				DateTime TimeStamp = XmlConvert.ToDateTime(it.Attribute("timestamp").Value,
+                if (HistoricalValues == null)
+                    HistoricalValues = new List<Tuple<DateTime, string>>();
+
+                DateTime TimeStamp = XmlConvert.ToDateTime(it.Attribute("timestamp").Value,
 														   XmlDateTimeSerializationMode.Utc);
 				string PointValue = it.Value;
 				HistoricalValues.Add(new Tuple<DateTime, string>(TimeStamp, PointValue));
