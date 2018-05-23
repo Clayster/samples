@@ -60,7 +60,7 @@ namespace LWTSD.ResourceTypes
 
 		public override ResourceDescription GetDescription()
 		{
-			return base.GetDescription(SimplifiedType.String);
+			return base.GetDescription(SimplifiedType.Base64Binary);
 		}
 
 		public override void LoadFromWrite(XElement WriteElement)
